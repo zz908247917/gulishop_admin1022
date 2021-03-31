@@ -10,10 +10,10 @@
     <el-card style="margin-top: 20px">
       <div v-show="!isShowSpuForm && !isShowSkuForm">
         <el-button
-          :disabled="!category3Id"
           type="primary"
           icon="el-icon-plus"
           @click="showAddSpuForm"
+          :disabled="!category3Id"
           >添加SPU</el-button
         >
         <el-table :data="spuList" border style="width: 100%">
@@ -50,7 +50,6 @@
                 icon="el-icon-info"
                 size="mini"
                 title="查看SKU"
-                @click="showSkuList(row)"
               ></HintButton
               ><HintButton
                 type="success"
@@ -63,13 +62,13 @@
         </el-table>
         <el-pagination
           style="text-align: center"
+          @size-change="handleSizeChange"
+          @current-change="getSpuList"
           :current-page="page"
           :page-sizes="[2, 3, 5]"
           :page-size="limit"
-          :total="total"
-          @current-change="getSpuList"
           layout="prev, pager,next, jumper, ->,sizes,,total "
-          @size-change="handleSizeChange"
+          :total="total"
         >
         </el-pagination>
       </div>
