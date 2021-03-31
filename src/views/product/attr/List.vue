@@ -95,7 +95,7 @@
               ></el-input>
               <span
                 v-else
-                @click="toEdit(row)"
+                @click="toEdit(row,$index)"
                 style="display: block; width: 100%"
                 >{{ row.valueName }}</span
               >
@@ -104,7 +104,7 @@
             <template slot-scope="{ row, $index }">
               <el-popconfirm
                 :title="`你确定要删除${row.valueName}吗？`"
-                @onCofirm="attrForm.attrValueList.splice($index, 1)"
+                @onConfirm="attrForm.attrValueList.splice($index, 1)"
               >
                 <HintButton
                   slot="reference"
