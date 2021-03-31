@@ -14,7 +14,7 @@
           type="primary"
           icon="el-icon-plus"
           @click="showAddSpuForm"
-          >添加SUP</el-button
+          >添加SPU</el-button
         >
         <el-table :data="spuList" border style="width: 100%">
           <el-table-column
