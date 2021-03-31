@@ -1,7 +1,10 @@
 <template>
   <div>
     <el-card>
-      <CategorySelector @handlerCategory="handlerCategory"></CategorySelector>
+      <CategorySelector
+        :isShowList="isShowList"
+        @handlerCategory="handlerCategory"
+      ></CategorySelector>
     </el-card>
     <el-card style="margin-top: 20px">
       <div v-show="isShowList">
@@ -27,6 +30,7 @@
           ><el-table-column prop="prop" label="属性列表" width>
             <template slot-scope="{ row, $index }">
               <el-tag
+                style="margin-right: 10px"
                 type="success"
                 v-for="(attrValue, index) in row.attrValueList"
                 :key="attrValue.id"
@@ -42,12 +46,19 @@
                 title="修改"
                 @click="showUpdateDiv(row)"
               ></HintButton>
-              <HintButton
-                type="danger"
-                size="mini"
-                icon="el-icon-delete"
-                title="删除"
-              ></HintButton>
+
+              <el-popconfirm
+                :title="`你确定要删除${row.attrName}吗？`"
+                @onConfirm="deleteAttr(row)"
+              >
+                <HintButton
+                  slot="reference"
+                  type="danger"
+                  size="mini"
+                  icon="el-icon-delete"
+                  title="删除"
+                ></HintButton>
+              </el-popconfirm>
             </template>
           </el-table-column>
         </el-table>
@@ -95,7 +106,7 @@
               ></el-input>
               <span
                 v-else
-                @click="toEdit(row,$index)"
+                @click="toEdit(row, $index)"
                 style="display: block; width: 100%"
                 >{{ row.valueName }}</span
               >
@@ -117,7 +128,12 @@
             </template>
           </el-table-column>
         </el-table>
-        <el-button type="primary">确定</el-button>
+        <el-button
+          type="primary"
+          :disabled="attrForm.attrValueList.length === 0"
+          @click="save"
+          >保存</el-button
+        >
         <el-button @click="isShowList = true">取消</el-button>
       </div>
     </el-card>
@@ -223,6 +239,37 @@ export default {
         return;
       }
       row.isEdit = false;
+    },
+    async save() {
+      let attr = this.attrForm;
+      attr.attrValueList = attr.attrValueList.filter((item) => {
+        if (item.valueName !== "") {
+          delete item.isEdit;
+          return true;
+        }
+      });
+      if (attr.attrValueList.length === 0) {
+        this.$message.info("属性值列表必须有属性值才能保存");
+        return;
+      }
+
+      try {
+        await this.$API.attr.addOrUpdate(attr);
+        this.$message.success("保存成功");
+        this.isShowList = true;
+        this.getAttrList();
+      } catch (error) {
+        this.$message.success("保存失败");
+      }
+    },
+    async deleteAttr(row) {
+      try {
+        await this.$API.attr.delete(row.id);
+        this.$message.success("删除成功");
+        this.getAttrList();
+      } catch (error) {
+        this.$message.success("删除失败");
+      }
     },
   },
 };
