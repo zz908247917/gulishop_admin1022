@@ -24,12 +24,12 @@
             label="序号"
             width="80"
           >
-          </el-table-column
-          ><el-table-column prop="spuName" label="SPU名称" width="width">
-          </el-table-column
-          ><el-table-column prop="description" label="SPU描述" width="width">
-          </el-table-column
-          ><el-table-column prop="prop" label="操作" width="width">
+          </el-table-column>
+          <el-table-column prop="spuName" label="SPU名称" width="width">
+          </el-table-column>
+          <el-table-column prop="description" label="SPU描述" width="width">
+          </el-table-column>
+          <el-table-column prop="prop" label="操作" width="width">
             <template slot-scope="{ row, $index }">
               <HintButton
                 type="success"
