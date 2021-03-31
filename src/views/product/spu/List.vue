@@ -122,7 +122,7 @@ export default {
 
       let { page, limit, category3Id } = this;
       const result = await this.$API.spu.getList(page, limit, category3Id);
-      if (result.code === 200 || result === 20000) {
+      if (result.code === 200 || result.code === 20000) {
         this.spuList = result.data.records;
         this.total = result.data.total;
       }
@@ -137,7 +137,7 @@ export default {
     showUpdateSpuForm(row) {
       this.isShowSpuForm = true;
     },
-    showAddSkuForm() {
+    showAddSkuForm(row) {
       this.isShowSkuForm = true;
     },
   },
