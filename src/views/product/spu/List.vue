@@ -67,7 +67,6 @@
           :page-sizes="[2, 3, 5]"
           :page-size="limit"
           :total="total"
-          :pager-count="5"
           @current-change="getSpuList"
           layout="prev, pager,next, jumper, ->,sizes,,total "
           @size-change="handleSizeChange"
