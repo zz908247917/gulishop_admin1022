@@ -35,27 +35,27 @@
                 type="success"
                 icon="el-icon-plus"
                 size="mini"
-                title="添加SKU"
+                title="添加sku"
                 @click="showAddSkuForm(row)"
-              ></HintButton
-              ><HintButton
-                type="success"
+              ></HintButton>
+              <HintButton
+                type="warning"
                 icon="el-icon-edit"
                 size="mini"
-                title="修改SKU"
+                title="修改spu"
                 @click="showUpdateSpuForm(row)"
-              ></HintButton
-              ><HintButton
-                type="success"
+              ></HintButton>
+              <HintButton
+                type="info"
                 icon="el-icon-info"
                 size="mini"
-                title="查看SKU"
-              ></HintButton
-              ><HintButton
-                type="success"
+                title="查看spu的sku列表"
+              ></HintButton>
+              <HintButton
+                type="danger"
                 icon="el-icon-delete"
                 size="mini"
-                title="删除SKU"
+                title="删除spu"
               ></HintButton>
             </template>
           </el-table-column>
