@@ -63,7 +63,7 @@
         </el-form>
         <el-button
           type="primary"
-          icon="el=icon-plus"
+          icon="el-icon-plus"
           @click="addAttrValue"
           :disabled="!attrForm.attrName"
           >添加属性值</el-button
@@ -90,7 +90,7 @@
                 v-if="row.isEdit"
                 v-model="row.valueName"
                 placeholder="请输入属性值名称"
-                @blur="toLook(row, $index)"
+                @blur="toLook(row)"
                 @keyup.enter.native="toLook(row)"
               ></el-input>
               <span
@@ -107,6 +107,7 @@
                 @onCofirm="attrForm.attrValueList.splice($index, 1)"
               >
                 <HintButton
+                  slot="reference"
                   icon="el-icon-delete"
                   type="danger"
                   size="mini"
