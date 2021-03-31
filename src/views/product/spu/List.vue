@@ -61,7 +61,6 @@
             </template>
           </el-table-column>
         </el-table>
-        <!-- @size-change="handleSizeChange" -->
         <el-pagination
           style="text-align: center"
           :current-page="page"
@@ -71,6 +70,7 @@
           :pager-count="5"
           @current-change="getSpuList"
           layout="prev, pager,next, jumper, ->,sizes,,total "
+          @size-change="handleSizeChange"
         >
         </el-pagination>
       </div>
