@@ -67,7 +67,7 @@
           :current-page="page"
           :page-sizes="[2, 3, 5]"
           :page-size="limit"
-          layout="prev, pager,next, jumper, ->,sizes,,total "
+          layout="prev, pager, next, jumper, ->,sizes,,total"
           :total="total"
         >
         </el-pagination>
