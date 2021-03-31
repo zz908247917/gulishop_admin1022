@@ -107,10 +107,10 @@ export default {
         this.category1Id = categoryId;
         this.category2Id = "";
         this.category3Id = "";
-        this.attrList = [];
+        this.spuList = [];
       } else if (level === 2) {
         this.category3Id = "";
-        this.attrList = [];
+        this.spuList = [];
         this.category2Id = categoryId;
       } else {
         this.category3Id = categoryId;
